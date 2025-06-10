@@ -7,9 +7,11 @@ import 'antd/dist/reset.css'; // For AntD v5+
 import { Tooltip } from 'antd';
 import { Navbar, Footer, Sidebar, ThemeSetting } from './components';
 import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
+import { useStateContext } from './contexts/ContextProvider';
 
 function App() {
-  const activeMenu = true;
+  
+  const {activeMenu,setActiveMenu} = useStateContext();
   const themeSetting = false;
   return (
     <div>
