@@ -1,9 +1,20 @@
 import React from 'react'
 
-function Button() {
-  return (
-    <div>Button</div>
-  )
-}
+import { useStateContext } from '../contexts/ContextProvider';
 
-export default Button
+const Button = ({bgColor, color, size, text, borderRadius }) => {
+  const { setIsClicked, initialState } = useStateContext();
+
+  return (
+    <button
+      type="button"
+      onClick={() => {}}
+      style={{ backgroundColor: bgColor, color, borderRadius }}
+      className={` text-${size} p-3  hover:drop-shadow-xl `}
+    >
+       {text}
+    </button>
+  );
+};
+
+export default Button;
