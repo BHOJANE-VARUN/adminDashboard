@@ -32,7 +32,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <div className="flex relative bg-[#FAFBFB] dark:bg-main-dark-bg">
+        <div className="flex relative bg-[#FAFBFB] dark:bg-[#20232A]">
           <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
             <Tooltip title={"Settings"}>
               <button
@@ -44,7 +44,7 @@ function App() {
             </Tooltip>
           </div>
           {activeMenu ? (
-            <div className="w-72 h-full fixed sidebar dark:bg-secondary-dark-bg bg-white ">
+            <div className="w-72 h-full fixed sidebar dark:bg-[#33373E] bg-white ">
               <Sidebar />
             </div>
           ) : (
@@ -55,11 +55,11 @@ function App() {
          <div
             className={
               activeMenu
-                ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
-                : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
+                ? 'dark:bg-[#20232A]  bg-[#FAFBFB] min-h-screen h-fit md:ml-72 w-full'
+                : 'bg-[#FAFBFB] dark:bg-[#20232A]  w-full min-h-screen flex-2'
             }
           >
-            <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
+            <div className="fixed md:static bg-[#FAFBFB] dark:bg-[#20232A] navbar w-full ">
               <Navbar />
             </div>
             <div>
