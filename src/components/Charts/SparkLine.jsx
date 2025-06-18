@@ -1,13 +1,6 @@
 import React from 'react'
 
-// function SparkLine({ id, height, width, color, data, type, currentColor }) {
-//   return (
-//     <div>SparkLine</div>
-//   )
-// }
 
-// export default SparkLine
-// import React from 'react';
 import Chart from 'react-apexcharts';
 import { SparklineAreaData } from '../../data/dummy';
 
