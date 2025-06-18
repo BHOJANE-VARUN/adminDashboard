@@ -54,7 +54,7 @@ const options = {
 function Area() {
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white dark:bg-[#33373E] rounded-3xl">
-      <Header category={"Chart"} title={"Line Chart"} />
+      <Header category="Area" title="Inflation Rate in percentage" />
       <div className="text-black">
         <Chart
           options={options}

@@ -16,7 +16,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => {
         type="button"
         onClick={customFunc}
         style={{ color }}
-        className="relative text-xl rounded-full p-3 hover:bg-gray-200"
+        className="relative text-xl rounded-full p-3 hover:bg-white hover:drop-shadow-black drop-shadow-md"
       >
         <span
           style={{ backgroundColor: dotColor }}
@@ -57,7 +57,7 @@ const Navbar = () => {
 
       <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
       <div className="flex">
-        <NavButton title="Cart" customFunc={() => handleClick('cart')} color={currentColor} icon={<FiShoppingCart />} />
+        <NavButton title="Cart" customFunc={() => handleClick('cart')} color={currentColor} icon={<FiShoppingCart />}  />
         <NavButton title="Chat" dotColor="#03C9D7" customFunc={() => handleClick('chat')} color={currentColor} icon={<BsChatLeft />} />
         <NavButton title="Notification" dotColor="rgb(254, 201, 15)" customFunc={() => handleClick('notification')} color={currentColor} icon={<RiNotification3Line />} />
         <Tooltip title="Profile" placement="bottom">
