@@ -12,6 +12,9 @@ body{
 }
 
 @import "tailwindcss";
+@import "tailwindcss/utilities";
+@custom-variant dark (&:where(.dark, .dark *));
+
 
 
 

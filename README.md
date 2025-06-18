@@ -11,3 +11,5 @@ removing event listeners
 })} what is isActive
 
 Each html tag has some default styling like p has mb-8 , so study about it
+
+tracking-tight

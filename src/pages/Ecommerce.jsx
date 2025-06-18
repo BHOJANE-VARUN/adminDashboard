@@ -4,10 +4,10 @@ import Button from "../components/Button";
 import { earningData } from "../data/dummy";
 import { BsDot } from "react-icons/bs";
 import { SparkLine, Stacked } from "../components";
-const currentColor = 'blue';
+import { useStateContext } from "../contexts/ContextProvider";
 
 function Ecommerce() {
-
+  const { currentColor} = useStateContext();
   return (
     <div className="mt-4">
       <div className="flex flex-col flex-wrap lg:flex-nowrap justify-center">
@@ -17,7 +17,7 @@ function Ecommerce() {
               <p className="font-bold text-gray-400">Earnings</p>
               <p className="text-2xl font-semibold text-black dark:text-white">₹12983.45</p>
               <Button
-                bgColor={"blue"}
+                bgColor={currentColor}
                 borderRadius={"10px"}
                 color={"white"}
                 size={"md"}

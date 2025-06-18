@@ -9,7 +9,7 @@ import { Navbar, Footer, Sidebar, ThemeSetting } from "./components";
 import {
   Ecommerce,
   Orders,
-  Calendar,
+  CalendarPage,
   Employees,
   Stacked,
   Pyramid,
@@ -20,24 +20,23 @@ import {
   Bar,
   Pie,
   Financial,
-  ColorPicker,
   ColorMapping,
   Editor,
 } from "./pages";
 import { useStateContext } from "./contexts/ContextProvider";
 
 function App() {
-  const { activeMenu, setActiveMenu } = useStateContext();
-  const themeSetting = false;
+  const { activeMenu, setActiveMenu,isThemeSettings,setIsThemeSettings,currentColor,currentMode } = useStateContext();
   return (
-    <div>
+    <div className={currentMode==='Dark'?"dark":""}>
       <BrowserRouter>
         <div className="flex relative bg-[#FAFBFB] dark:bg-[#20232A]">
           <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
             <Tooltip title={"Settings"}>
               <button
                 className="text-3xl p-3 rounded-full hover:bg-light-gray hover:drop-shadow-xl"
-                style={{ background: "blue" }}
+                style={{ background: currentColor }}
+                onClick={() => setIsThemeSettings(true)}
               >
                 <FiSettings className="text-white text-3xl" />
               </button>
@@ -55,16 +54,16 @@ function App() {
          <div
             className={
               activeMenu
-                ? 'dark:bg-[#20232A]  bg-[#FAFBFB] min-h-screen h-fit md:ml-72 w-full'
+                ? 'dark:bg-[#20232A]  bg-[#FAFBFB] min-h-screen h-fit md:ml-72 w-full customLen'
                 : 'bg-[#FAFBFB] dark:bg-[#20232A]  w-full min-h-screen flex-2'
             }
           >
             <div className="fixed md:static bg-[#FAFBFB] dark:bg-[#20232A] navbar w-full ">
               <Navbar />
             </div>
-            <div>
-              {/* {themeSetting && (<ThemeSetting />)} */}
-
+            <>
+              {isThemeSettings && (<ThemeSetting />)}
+           
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={(<Ecommerce />)} />
@@ -78,8 +77,7 @@ function App() {
                 {/* apps  */}
                 <Route path="/kanban" element={<Kanban />} />
                 <Route path="/editor" element={<Editor />} />
-                <Route path="/calendar" element={<Calendar />} />
-                <Route path="/color-picker" element={<ColorPicker />} />
+                <Route path="/calendar" element={<CalendarPage />} />
 
                 {/* charts  */}
                 <Route path="/line" element={<Line />} />
@@ -92,7 +90,7 @@ function App() {
                 <Route path="/stacked" element={<Stacked />} />
 
               </Routes>
-            </div>
+            </>
             {/* <Footer /> */}
           </div>
           </div>

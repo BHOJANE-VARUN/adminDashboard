@@ -30,8 +30,8 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => {
 
 
 const Navbar = () => {
-  const { activeMenu, setActiveMenu, handleClick, isClicked,screenSize,setScreenSize} = useStateContext();
-  const currentColor = 'blue';
+  const { activeMenu, setActiveMenu, handleClick, isClicked,screenSize,setScreenSize,currentColor} = useStateContext();
+  
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
 

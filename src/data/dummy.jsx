@@ -22,63 +22,65 @@ import product5 from './product5.jpg';
 import product6 from './product6.jpg';
 import product7 from './product7.jpg';
 import product8 from './product8.jpg';
+import { useStateContext } from '../contexts/ContextProvider';
 
-export const gridOrderImage = (props) => (
+export const gridOrderImage = (value, record, index) => (
   <div>
     <img
       className="rounded-xl h-20 md:ml-3"
-      src={props.ProductImage}
+      src={value.ProductImage}
       alt="order-item"
     />
   </div>
 );
 
-export const gridOrderStatus = (props) => (
+export const gridOrderStatus = (value, record, index) => {
+  return (
   <button
     type="button"
-    style={{ background: props.StatusBg }}
+    style={{ background: record.StatusBg }}
     className="text-white py-1 px-2 capitalize rounded-2xl text-md"
   >
-    {props.Status}
+    {record.Status}
   </button>
 );
-
+}
 export const kanbanGrid = [
-  { headerText: 'To Do',
-    keyField: 'Open',
+  { title: 'To Do',
+    keydataIndex: 'Open',
     allowToggle: true },
 
-  { headerText: 'In Progress',
-    keyField: 'InProgress',
+  { title: 'In Progress',
+    keydataIndex: 'InProgress',
     allowToggle: true },
 
-  { headerText: 'Testing',
-    keyField: 'Testing',
+  { title: 'Testing',
+    keydataIndex: 'Testing',
     allowToggle: true,
     isExpanded: false },
 
-  { headerText: 'Done',
-    keyField: 'Close',
+  { title: 'Done',
+    keydataIndex: 'Close',
     allowToggle: true },
 ];
-const gridEmployeeProfile = (props) => (
+export const gridEmployeeProfile = (value, record, index) => (
   <div className="flex items-center gap-2">
     <img
       className="rounded-full w-10 h-10"
-      src={props.EmployeeImage}
+      src={record.EmployeeImage}
       alt="employee"
     />
-    <p>{props.Name}</p>
+    <p>{record.Name}</p>
   </div>
 );
 
-const gridEmployeeCountry = (props) => (
+export const gridEmployeeCountry = (value, record, index) => (
   <div className="flex items-center justify-center gap-2">
     <GrLocation />
-    <span>{props.Country}</span>
+    <span>{record.Country}</span>
   </div>
 );
-export const EditorData = () => (
+export const EditorData =`
   <div>
     <h3>
       Try React
@@ -119,25 +121,25 @@ export const EditorData = () => (
       We recommend going through this JavaScript overview to check your knowledge level. It will take you between 30 minutes and an hour but you will feel more confident learning React.
     </h3>
   </div>
-);
-const customerGridImage = (props) => (
+`
+const customerGridImage = (value, record, index) => (
   <div className="image flex gap-4">
     <img
       className="rounded-full w-10 h-10"
-      src={props.CustomerImage}
+      src={record.CustomerImage}
       alt="employee"
     />
     <div>
-      <p>{props.CustomerName}</p>
-      <p>{props.CustomerEmail}</p>
+      <div>{record.CustomerName}</div>
+      <p>{record.CustomerEmail}</p>
     </div>
   </div>
 );
 
-const customerGridStatus = (props) => (
+const customerGridStatus = (value, record, index) => (
   <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
-    <p style={{ background: props.StatusBg }} className="rounded-full h-3 w-3" />
-    <p>{props.Status}</p>
+    <p style={{ background: record.StatusBg }} className="rounded-full h-3 w-3" />
+    <p>{record.Status}</p>
   </div>
 );
 export const areaPrimaryXAxis = {
@@ -393,82 +395,45 @@ export const LinePrimaryYAxis = {
 
 export const customersGrid = [
   { type: 'checkbox', width: '50' },
-  { headerText: 'Name',
+  { title: 'Name',
     width: '150',
-    template: customerGridImage,
+    render: customerGridImage,
     textAlign: 'Center' },
-  { field: 'ProjectName',
-    headerText: 'Project Name',
+  { dataIndex: 'ProjectName',
+    title: 'Project Name',
     width: '150',
     textAlign: 'Center' },
-  { field: 'Status',
-    headerText: 'Status',
+  { dataIndex: 'Status',
+    title: 'Status',
     width: '130',
     format: 'yMd',
     textAlign: 'Center',
-    template: customerGridStatus },
+    render: customerGridStatus },
   {
-    field: 'Weeks',
-    headerText: 'Weeks',
+    dataIndex: 'Weeks',
+    title: 'Weeks',
     width: '100',
     format: 'C2',
     textAlign: 'Center' },
-  { field: 'Budget',
-    headerText: 'Budget',
+  { dataIndex: 'Budget',
+    title: 'Budget',
     width: '100',
     format: 'yMd',
     textAlign: 'Center' },
 
-  { field: 'Location',
-    headerText: 'Location',
+  { dataIndex: 'Location',
+    title: 'Location',
     width: '150',
     textAlign: 'Center' },
 
-  { field: 'CustomerID',
-    headerText: 'Customer ID',
+  { dataIndex: 'key',
+    title: 'Customer ID',
     width: '120',
     textAlign: 'Center',
     isPrimaryKey: true,
   },
 
 ];
-
-export const employeesGrid = [
-  { headerText: 'Employee',
-    width: '150',
-    template: gridEmployeeProfile,
-    textAlign: 'Center' },
-  { field: 'Name',
-    headerText: '',
-    width: '0',
-    textAlign: 'Center',
-  },
-  { field: 'Title',
-    headerText: 'Designation',
-    width: '170',
-    textAlign: 'Center',
-  },
-  { headerText: 'Country',
-    width: '120',
-    textAlign: 'Center',
-    template: gridEmployeeCountry },
-
-  { field: 'HireDate',
-    headerText: 'Hire Date',
-    width: '135',
-    format: 'yMd',
-    textAlign: 'Center' },
-
-  { field: 'ReportsTo',
-    headerText: 'Reports To',
-    width: '120',
-    textAlign: 'Center' },
-  { field: 'EmployeeID',
-    headerText: 'Employee ID',
-    width: '125',
-    textAlign: 'Center' },
-];
-
 export const links = [
   {
     title: 'Dashboard',
@@ -511,10 +476,6 @@ export const links = [
       {
         name: 'editor',
         icon: <FiEdit />,
-      },
-      {
-        name: 'color-picker',
-        icon: <BiColorFill />,
       },
     ],
   },
@@ -872,56 +833,75 @@ export const userProfileData = [
 
 export const ordersGrid = [
   {
-    headerText: 'Image',
-    template: gridOrderImage,
+    title: 'Image',
+    render: gridOrderImage,
     textAlign: 'Center',
     width: '120',
   },
   {
-    field: 'OrderItems',
-    headerText: 'Item',
+    dataIndex: 'OrderItems',
+    title: 'Item',
     width: '150',
     editType: 'dropdownedit',
     textAlign: 'Center',
+    sorter: function (record1,record2){
+      return record1.TotalAmount>record2.TotalAmount;
+    },
   },
-  { field: 'CustomerName',
-    headerText: 'Customer Name',
+  { dataIndex: 'CustomerName',
+    title: 'Customer Name',
     width: '150',
     textAlign: 'Center',
+    sorter: function (record1,record2){
+      return record1.TotalAmount>record2.TotalAmount;
+    },
   },
   {
-    field: 'TotalAmount',
-    headerText: 'Total Amount',
+    dataIndex: 'TotalAmount',
+    title: 'Total Amount',
     format: 'C2',
     textAlign: 'Center',
     editType: 'numericedit',
     width: '150',
+    sorter: function (record1,record2){
+      return record1.TotalAmount>record2.TotalAmount;
+    },
+    defaultSortOrder:'ascend',
   },
   {
-    headerText: 'Status',
-    template: gridOrderStatus,
-    field: 'OrderItems',
+    title: 'Status',
+    render: gridOrderStatus,
+    dataIndex: 'OrderItems',
     textAlign: 'Center',
     width: '120',
+    sorter: function (record1,record2){
+      return record1.TotalAmount>record2.TotalAmount;
+    },
   },
   {
-    field: 'OrderID',
-    headerText: 'Order ID',
+    dataIndex: 'OrderID',
+    title: 'Order ID',
     width: '120',
     textAlign: 'Center',
+    sorter: function (record1,record2){
+      return record1.OrderID>record2.OrderID;
+    },
   },
 
   {
-    field: 'Location',
-    headerText: 'Location',
+    dataIndex: 'Location',
+    title: 'Location',
     width: '150',
     textAlign: 'Center',
+    sorter: function (record1,record2){
+      return record1.TotalAmount>record2.TotalAmount;
+    },
   },
 ];
 
 export const customersData = [
   {
-    CustomerID: 1001,
+    key: 1001,
     CustomerName: 'Nirav Joshi',
     CustomerEmail: 'nirav@gmail.com',
     CustomerImage:
@@ -934,7 +914,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1002,
+    key: 1002,
 
     CustomerName: 'Sunil Joshi',
     CustomerEmail: 'sunil@gmail.com',
@@ -949,7 +929,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1003,
+    key: 1003,
 
     CustomerName: 'Andrew McDownland',
     CustomerEmail: 'andrew@gmail.com',
@@ -963,7 +943,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1004,
+    key: 1004,
 
     CustomerName: 'Christopher Jamil',
     CustomerEmail: 'jamil@gmail.com',
@@ -977,7 +957,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1005,
+    key: 1005,
 
     CustomerName: 'Michael',
     CustomerEmail: 'michael@gmail.com',
@@ -991,7 +971,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1006,
+    key: 1006,
     CustomerName: 'Nirav Joshi',
     CustomerEmail: 'nirav@gmail.com',
     CustomerImage:
@@ -1004,7 +984,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1007,
+    key: 1007,
 
     CustomerName: 'Sunil Joshi',
     CustomerEmail: 'sunil@gmail.com',
@@ -1019,7 +999,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1008,
+    key: 1008,
 
     CustomerName: 'Andrew McDownland',
     CustomerEmail: 'andrew@gmail.com',
@@ -1033,7 +1013,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1009,
+    key: 1009,
 
     CustomerName: 'Christopher Jamil',
     CustomerEmail: 'jamil@gmail.com',
@@ -1047,7 +1027,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1010,
+    key: 1010,
 
     CustomerName: 'Michael',
     CustomerEmail: 'michael@gmail.com',
@@ -1061,7 +1041,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1011,
+    key: 1011,
     CustomerName: 'Nirav Joshi',
     CustomerEmail: 'nirav@gmail.com',
     CustomerImage:
@@ -1074,7 +1054,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1012,
+    key: 1012,
 
     CustomerName: 'Sunil Joshi',
     CustomerEmail: 'sunil@gmail.com',
@@ -1089,7 +1069,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1013,
+    key: 1013,
 
     CustomerName: 'Andrew McDownland',
     CustomerEmail: 'andrew@gmail.com',
@@ -1103,7 +1083,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1014,
+    key: 1014,
 
     CustomerName: 'Christopher Jamil',
     CustomerEmail: 'jamil@gmail.com',
@@ -1117,7 +1097,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1015,
+    key: 1015,
 
     CustomerName: 'Michael',
     CustomerEmail: 'michael@gmail.com',
@@ -1131,7 +1111,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1016,
+    key: 1016,
     CustomerName: 'Nirav Joshi',
     CustomerEmail: 'nirav@gmail.com',
     CustomerImage:
@@ -1144,7 +1124,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1017,
+    key: 1017,
 
     CustomerName: 'Sunil Joshi',
     CustomerEmail: 'sunil@gmail.com',
@@ -1159,7 +1139,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1018,
+    key: 1018,
 
     CustomerName: 'Andrew McDownland',
     CustomerEmail: 'andrew@gmail.com',
@@ -1173,7 +1153,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1019,
+    key: 1019,
 
     CustomerName: 'Christopher Jamil',
     CustomerEmail: 'jamil@gmail.com',
@@ -1187,7 +1167,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1020,
+    key: 1020,
 
     CustomerName: 'Michael',
     CustomerEmail: 'michael@gmail.com',
@@ -1201,7 +1181,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1021,
+    key: 1021,
     CustomerName: 'Nirav Joshi',
     CustomerEmail: 'nirav@gmail.com',
     CustomerImage:
@@ -1214,7 +1194,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1022,
+    key: 1022,
 
     CustomerName: 'Sunil Joshi',
     CustomerEmail: 'sunil@gmail.com',
@@ -1229,7 +1209,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1023,
+    key: 1023,
 
     CustomerName: 'Andrew McDownland',
     CustomerEmail: 'andrew@gmail.com',
@@ -1243,7 +1223,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1024,
+    key: 1024,
 
     CustomerName: 'Christopher Jamil',
     CustomerEmail: 'jamil@gmail.com',
@@ -1257,7 +1237,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1025,
+    key: 1025,
 
     CustomerName: 'Michael',
     CustomerEmail: 'michael@gmail.com',
@@ -1271,7 +1251,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1026,
+    key: 1026,
     CustomerName: 'Nirav Joshi',
     CustomerEmail: 'nirav@gmail.com',
     CustomerImage:
@@ -1284,7 +1264,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1027,
+    key: 1027,
 
     CustomerName: 'Sunil Joshi',
     CustomerEmail: 'sunil@gmail.com',
@@ -1299,7 +1279,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1028,
+    key: 1028,
 
     CustomerName: 'Andrew McDownland',
     CustomerEmail: 'andrew@gmail.com',
@@ -1313,7 +1293,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1029,
+    key: 1029,
 
     CustomerName: 'Christopher Jamil',
     CustomerEmail: 'jamil@gmail.com',
@@ -1327,7 +1307,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1030,
+    key: 1030,
 
     CustomerName: 'Michael',
     CustomerEmail: 'michael@gmail.com',
@@ -1341,7 +1321,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1031,
+    key: 1031,
     CustomerName: 'Nirav Joshi',
     CustomerEmail: 'nirav@gmail.com',
     CustomerImage:
@@ -1354,7 +1334,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1032,
+    key: 1032,
 
     CustomerName: 'Sunil Joshi',
     CustomerEmail: 'sunil@gmail.com',
@@ -1369,7 +1349,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1033,
+    key: 1033,
 
     CustomerName: 'Andrew McDownland',
     CustomerEmail: 'andrew@gmail.com',
@@ -1383,7 +1363,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1034,
+    key: 1034,
 
     CustomerName: 'Christopher Jamil',
     CustomerEmail: 'jamil@gmail.com',
@@ -1397,7 +1377,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1035,
+    key: 1035,
 
     CustomerName: 'Michael',
     CustomerEmail: 'michael@gmail.com',
@@ -1411,7 +1391,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1036,
+    key: 1036,
     CustomerName: 'Nirav Joshi',
     CustomerEmail: 'nirav@gmail.com',
     CustomerImage:
@@ -1424,7 +1404,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1037,
+    key: 1037,
 
     CustomerName: 'Sunil Joshi',
     CustomerEmail: 'sunil@gmail.com',
@@ -1439,7 +1419,7 @@ export const customersData = [
     Location: 'India',
   },
   {
-    CustomerID: 1038,
+    key: 1038,
 
     CustomerName: 'Andrew McDownland',
     CustomerEmail: 'andrew@gmail.com',
@@ -1453,7 +1433,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1039,
+    key: 1039,
     CustomerName: 'Christopher Jamil',
     CustomerEmail: 'jamil@gmail.com',
     ProjectName: 'MedicalPro WP Theme',
@@ -1466,7 +1446,7 @@ export const customersData = [
     Location: 'USA',
   },
   {
-    CustomerID: 1040,
+    key: 1040,
     CustomerName: 'Michael',
     CustomerEmail: 'michael@gmail.com',
     ProjectName: 'Weekly WP Theme',
