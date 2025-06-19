@@ -43,7 +43,7 @@ function App() {
             </Tooltip>
           </div>
           {activeMenu ? (
-            <div className="w-72 h-full fixed sidebar dark:bg-[#33373E] bg-white ">
+            <div className="w-72 h-full fixed sidebar  dark:bg-[#33373E] bg-white ">
               <Sidebar />
             </div>
           ) : (

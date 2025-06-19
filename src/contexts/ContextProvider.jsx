@@ -14,7 +14,7 @@ const initialState = {
 export const ContextProvider = ({children}) =>{
     const [activeMenu, setActiveMenu] = useState(true);
     const [isClicked,setisClicked] = useState(initialState); 
-    const handleClick = (clicked)=>{ setisClicked(({...initialState,[clicked]:true})) }
+    const handleClick = (clicked,value)=> { setisClicked(({...initialState,[clicked]:value})) }
     const [screenSize,setScreenSize] = useState(undefined);
     const [isThemeSettings, setIsThemeSettings] = useState(false);
     const [currentColor, setCurrentColor] = useState('#03C9D7');

@@ -18,7 +18,7 @@ import product1 from './product1.jpg';
 import product2 from './product2.jpg';
 import product3 from './product3.jpg';
 import product4 from './product4.jpg';
-import product5 from './product5.jpg';
+import product5 from './../data/product5.jpg';
 import product6 from './product6.jpg';
 import product7 from './product7.jpg';
 import product8 from './product8.jpg';
